@@ -18,5 +18,21 @@
   "scripts": {
     "dev": "node index.js",
     "build": "webpack"
-  }
+  },
+  "name": "visualize",
+  "description": "```",
+  "version": "1.0.0",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalondepeace/Con-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalondepeace/Con-tracker/issues"
+  },
+  "homepage": "https://github.com/kalondepeace/Con-tracker#readme"
 }
