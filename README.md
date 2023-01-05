@@ -1,3 +1,20 @@
+## Con-tracker. :smile: 
+###Demo : https://kalondepeace.github.io/Con-tracker/
+
+This is a Dapp built on the celo block chain that enables users to track all transactions from different addresses in one place.
+    
+ ## Users can:
+    * easily create an account to start using the Dapp
+    * track transactions from normal addresses as well as contract addresses.
+    * view all the previous transactions for a particular address.
+    * view account balances for different tokens held by the address
+    * Save and delete addresses.
+    * Give addresses custom names for easy identification.
+   
+
+
+
+
 # Install
 
 ```
