@@ -285,6 +285,7 @@ document
  async function displayAddrData(txn,bal){
 
           document.getElementById("details-m").innerHTML = ""
+          document.getElementById("details-m").innerHTML ="<h3> Transaction History</h3>"
           const tclass = document.createElement("table")
           tclass.className="table table-bordered table-hover"
           tclass.innerHTML+='<thead class="thead-dark"><tr><th scope="col">To</th><th scope="col">Amount</th><th scope="col">time</th><th scope="col">Gas</th></tr></thead>'
