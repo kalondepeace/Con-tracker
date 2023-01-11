@@ -7,12 +7,12 @@ import erc20Abi from "../contract/erc20.abi.json"
 var fetch = require('node-fetch');
 
 const ERC20_DECIMALS = 18
-const MPContractAddress = "0x9451ACb3DbBEEc2fd23F6917AEA55A601B9832A0"
+const MPContractAddress = "0xdDfc965251f25e2C73E85d7C37905dAbAaf082Bc";
+// "0x9451ACb3DbBEEc2fd23F6917AEA55A601B9832A0"
 
 let kit
 let contract
 let accounts
-let gEmail
 
 
 //connect to the celo network
@@ -43,24 +43,24 @@ const connectCeloWallet = async function () {
 
 
 //when the window loads for the first time.
-window.addEventListener('load', async () => {
-  await connectCeloWallet()
-});
+// window.addEventListener('load', async () => {
+//   await connectCeloWallet()
+// });
 
 
 //check whether the email is registered or not..
-async function check(email){
-        const _email = email;
-        try{
-        const eCheck = await contract.methods
-              .Isreg(_email)
-              .call()
-              return eCheck;
+// async function check(email){
+//         const _email = email;
+//         try{
+//         const eCheck = await contract.methods
+//               .Isreg(_email)
+//               .call()
+//               return eCheck;
 
-         }catch(error){
-              console.log(error)
-     }       
-}
+//          }catch(error){
+//               console.log(error)
+//      }       
+// }
 
 
 //function to save a project
@@ -73,10 +73,9 @@ document
         }else{
 
         const params = [
-           gEmail,
-           document.getElementById("newContractName").value,
-             document.getElementById("newContractAddress").value,
-            document.getElementById("newType").value
+             document.getElementById("newContractName").value,
+             document.getElementById("newType").value,
+             document.getElementById("newContractAddress").value
             ]
 
         notification(`saving......... ${params[1]}`)
@@ -90,7 +89,7 @@ document
           }catch(error){
             notification("We are having trouble creating your project, please try again later")
           }
-         getProjects(gEmail)
+         getProjects()
        }
   })
 
@@ -100,24 +99,22 @@ document
 document
   .querySelector("#stunted")
   .addEventListener("click", async (e) => {
-   
-          if(document.getElementById("email").value==""){
-            notification("Please fill in your email address....")
+          notification("⌛ Loading...");
+          await connectCeloWallet();
+          notification("Wallet connected");
 
-          }else{
-        const _email = document.getElementById("email").value
+          const isReg = await contract.methods.Isreg(kit.defaultAccount).call()
+          notification("checking account.....");
 
-        const Isre = await check(_email)
-        notification("checking account.....")
-
-          if(Isre){
-
+          if(isReg){
             //fetch all the contracts registered with the email.
-             document.getElementById("tokenz").innerHTML =""
-             document.getElementById("balance").innerHTML = _email
-             gEmail=_email
 
-             getProjects(_email)
+             document.getElementById("tokenz").innerHTML =""
+
+            //  Display Identicon
+            document.querySelector(".identicon").innerHTML = identiconTemplate(kit.defaultAccount);
+
+             getProjects()
              notificationOff()
              document.getElementById("marketplace").innerHTML =""
              navOn()
@@ -127,11 +124,10 @@ document
             try{
             notification("Creating an account.......")
               const result = await contract.methods
-              .registerAccount(_email)
+              .registerAccount(kit.defaultAccount)
               .send({ from: kit.defaultAccount })
 
-               gEmail= _email
-              homepage(_email)
+              homepage(kit.defaultAccount)
               notificationOff()
               navOn()
               notification("Account created successfully, you can now proceed.")
@@ -140,21 +136,21 @@ document
                notification("We are having trouble creating your account, please try again later")
             }
           }
-        }
+        
 })
 
 
 
 //get all contracts from the sc
-  const getProjects = async function(_email) {
+  const getProjects = async function() {
           const proj=[]
-          const _contractsLength = await contract.methods.getNoProjects().call()
+          const _contractsLength = await contract.methods.NoOfProjects().call()
 
           for (let i = 0; i < _contractsLength; i++) {
 
-            let r = await contract.methods.getContract(i).call() 
-                if(r[0] == _email){
-                    proj.push({index: i, owner: r[0], name: r[1], contractAddr: r[2], type: r[3]})
+            let r = await contract.methods.getContract(i).call()
+                if(r[0] == kit.defaultAccount){
+                  proj.push({index: i, owner: r[0], name: r[1], contractAddr: r[2], type: r[3]})
                 }
           }
           displayResults(proj)     
@@ -276,7 +272,7 @@ document
          notification(`You have successfully deleted ${index}`)
          
          notificationOff()
-         getProjects(gEmail)
+         getProjects()
   }
 })
 
@@ -349,13 +345,31 @@ function navOn(){
        document.getElementById("navbarTarget").style.display = "block"
 }
 
-function homepage(){
-       document.getElementById("marketplace").innerHTML = ""
-       document.getElementById("balance").innerHTML = gEmail
+async function homepage(address){
+      const totalBalance = await kit.getTotalBalance(address)
+      const cUSDBalance = totalBalance.cUSD.shiftedBy(-ERC20_DECIMALS).toFixed(2)
+      document.getElementById("marketplace").innerHTML = ""
+      document.getElementById("balance").innerHTML = cUSDBalance;
 }
 
+function identiconTemplate(_address) {
+  const icon = blockies
+    .create({
+      seed: _address,
+      size: 8,
+      scale: 16,
+    })
+    .toDataURL()
 
-
+  return `
+  <div class="rounded-circle overflow-hidden d-inline-block border border-white border-2 shadow-sm m-0">
+    <a href="https://alfajores-blockscout.celo-testnet.org/address/${_address}/transactions"
+        target="_blank">
+        <img src="${icon}" width="48" alt="${_address}">
+    </a>
+  </div>
+  `
+}
 
 
 

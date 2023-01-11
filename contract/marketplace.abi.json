@@ -2,28 +2,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"name": "EmailExists",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_email",
-				"type": "string"
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
 			}
 		],
 		"name": "Isreg",
@@ -39,12 +20,31 @@
 	},
 	{
 		"inputs": [],
-		"name": "allAccounts",
+		"name": "NoOfProjects",
 		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "accountExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -61,9 +61,9 @@
 		"name": "contracts",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "owner",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -72,12 +72,12 @@
 			},
 			{
 				"internalType": "address",
-				"name": "contractAddr",
+				"name": "addr",
 				"type": "address"
 			},
 			{
 				"internalType": "string",
-				"name": "Type",
+				"name": "addressType",
 				"type": "string"
 			}
 		],
@@ -101,25 +101,6 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "emailAddresses",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
 				"name": "_index",
 				"type": "uint256"
 			}
@@ -129,9 +110,9 @@
 			{
 				"components": [
 					{
-						"internalType": "string",
+						"internalType": "address",
 						"name": "owner",
-						"type": "string"
+						"type": "address"
 					},
 					{
 						"internalType": "string",
@@ -140,12 +121,12 @@
 					},
 					{
 						"internalType": "address",
-						"name": "contractAddr",
+						"name": "addr",
 						"type": "address"
 					},
 					{
 						"internalType": "string",
-						"name": "Type",
+						"name": "addressType",
 						"type": "string"
 					}
 				],
@@ -158,24 +139,11 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getNoProjects",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "_emailAddress",
-				"type": "string"
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
 			}
 		],
 		"name": "registerAccount",
@@ -187,28 +155,36 @@
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "_emailAddress",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
 				"name": "_name",
 				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_contractAddr",
-				"type": "address"
 			},
 			{
 				"internalType": "string",
 				"name": "_type",
 				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
 			}
 		],
 		"name": "storeProject",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalAccounts",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]

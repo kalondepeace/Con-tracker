@@ -61,18 +61,14 @@
           <a href="#" class="btn btn-primary" role="button"  data-bs-toggle="modal" data-bs-target="#addModal">Create</a>
         </div>
          <div class="justify-content-end text-light" id="tokenz" style="display:flex"></div>
-          <span class="nav-link border rounded-pill bg-primary">
-
-            <span id="balance">0</span>
-          </span>
-         
+            <div class="identicon"></div>
 
         </div>
         
       </nav>
 
-       <div class="alert alert-warning sticky-top mt-2" role="alert">
-        <span id="notification">⌛ Loading...</span>
+       <div style="display: none;" class="alert alert-warning sticky-top mt-2" role="alert">
+        <span id="notification"></span>
        </div>
           <main id="marketplace" class="row .g-0   ">
               <div id="intro" class="bg-image shadow-2-strong">
@@ -80,17 +76,7 @@
                   <h2>Con-Tracker</h2>
                   <span>Track all your addresses in one place.</span>
                   <hr>
-
-                <form>
-                     <div class="col">
-                        <input type="email", id="email" class="form-control mb-2" required="true" placeholder="Enter email address">
-                     </div>
-              
-                     <div class="d-grid gap-1">
-                        <a class="fw-bold btn btn-lg btn-outline-dark border fs-6 p-3" id="stunted" style="background-color: #222222; color: #FFFFFF">Get Started..</a>
-                      </div>
-          
-                </form>
+                  <button class="fw-bold btn btn-lg btn-outline-dark border fs-6 p-3" id="stunted" style="background-color: #222222; color: #FFFFFF">Connect Wallet</button>
                 <span> Github Code: https://github.com/kalondepeace/Con-tracker</span>
                 
             </div>
