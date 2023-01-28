@@ -101,7 +101,7 @@ document
             notification("Please fill out all the fields")
 
         }else if(response == 0){
-            notification("You dont have enough tokens to continue. ⚠️Please purchase more.")
+            notification("⚠️You dont have enough points to continue.⚠️")
             document.getElementById("marketplace").innerHTML =""
 
              const contDiv = document.createElement("div")
@@ -246,7 +246,7 @@ function projectTemplate(_project) {
       const _quantity = e.target.id
 
       const _pprice = e.target.getAttribute("amount")
-        notification("Waiting for payment approval to buy tokenz")
+        notification("Waiting for payment approval to buy points")
       const _price = new BigNumber(e.target.getAttribute("amount"))
       .shiftedBy(ERC20_DECIMALS)
       .toString()
@@ -257,7 +257,7 @@ function projectTemplate(_project) {
          } catch (error) {
              console.log(`⚠️ ${error}.`)
         }
-        notification(`Waiting for payment of ${_pprice} cUSD for ${_quantity} tokens`)
+        notification(`Waiting for payment of ${_pprice} cUSD for ${_quantity} points`)
 
         try {
           const result = await contract.methods
@@ -306,7 +306,7 @@ function projectTemplate(_project) {
 
    
       }catch(e){
-        notification("Token transfer failed.........")
+        notification("Points transfer failed.........")
       }
       notificationOff()
   }
@@ -458,26 +458,26 @@ function purchaseTokens() {
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://i.ibb.co/Y3jXn93/bronze-package-360x470.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Bronze</h5>
-              
-              <a href="#" class="btn btn-primary subBtn" amount="1" role="submit" id="3">Purchase</a>
+            <span>2 points for 1cUSD</span>
+            <hr>
+
+              <a href="#" class="btn btn-primary subBtn" amount="1" role="submit" id="2">Purchase</a>
             </div>
           </div>
 
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://i.ibb.co/7GhjLTL/gold-package-360x470.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Silver</h5>
-              
-              <a href="#" class="btn btn-primary subBtn" amount="7" role="submit" id="7">Purchase</a>
+              <span>5 points for 2cUSD</span>
+              <a href="#" class="btn btn-primary subBtn" amount="2" role="submit" id="5">Purchase</a>
             </div>
           </div>
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://i.ibb.co/PGqXkvn/platinum-package-360x470.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Gold</h5>
+              <span>8 points for 3cUSD</span>
               
-              <a href="#" class="btn btn-primary subBtn" amount="12" role="submit" id="12">Purchase</a>
+              <a href="#" class="btn btn-primary subBtn" amount="3" role="submit" id="8">Purchase</a>
             </div>
         </div>
 
@@ -520,10 +520,20 @@ async function bunBalance(){
                     .getTokens()
                     .call()
                     
-        document.getElementById("balance").innerHTML =response
+        document.getElementById("tokens").innerHTML =`${response} points`
 
 
     }catch(e){
         console.log(error)
     }
+    getBalance()
+}
+
+
+
+//get balance form the smart contract
+const getBalance = async function () {
+  const totalBalance = await kit.getTotalBalance(kit.defaultAccount)
+  const cUSDBalance = totalBalance.cUSD.shiftedBy(-ERC20_DECIMALS).toFixed(1)
+  document.querySelector("#balance").textContent = `${cUSDBalance} cUSD`
 }
