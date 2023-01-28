@@ -13,8 +13,8 @@ Users
     * View account balances for different tokens held by the address
     * Save and delete addresses.
     * Give addresses custom names for easy identification.
-    * Buy tokens to start using the Dapp
-    * Transfer tokens to other users of the Dapp.
+    * Buy points to start using the Dapp
+    * Transfer points to other users of the Dapp.
    
 
 
