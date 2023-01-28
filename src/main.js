@@ -368,7 +368,7 @@ async function displayTokens(Tkns) {
 
 function tknTemplate(tkn) {
     return `
-   <p>${new BigNumber(tkn.balance).shiftedBy(-ERC20_DECIMALS).toString()}${tkn.symbol}</p>&nbsp &nbsp &nbsp
+   <p>${new BigNumber(tkn.balance).shiftedBy(-ERC20_DECIMALS).toFixed(2)}${tkn.symbol}</p>&nbsp &nbsp &nbsp
   `
 }
 
