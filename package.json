@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "dependencies": {
-    "@celo/contractkit": "^1.0.2",
+    "@celo/contractkit": "^5.1.0",
     "bignumber.js": "^9.0.1",
     "dgram": "^1.0.1",
     "dns": "^0.2.2",
