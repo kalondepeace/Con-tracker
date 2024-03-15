@@ -1,0 +1,56 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:mime:20170907':
+    - dns > winston > request > mime:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:mime:20170907'
+        path: dns > winston > request > mime
+    - dns > winston > request > form-data > mime:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:mime:20170907'
+        path: dns > winston > request > form-data > mime
+    - dns > tomahawk > winston > request > mime:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:mime:20170907'
+        path: dns > tomahawk > winston > request > mime
+    - dns > tomahawk > winston > request > form-data > mime:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:mime:20170907'
+        path: dns > tomahawk > winston > request > form-data > mime
+  'npm:ms:20151024':
+    - dns > tomahawk > connect > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > connect > debug > ms
+    - dns > tomahawk > express > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > express > debug > ms
+    - dns > tomahawk > express > finalhandler > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > express > finalhandler > debug > ms
+    - dns > tomahawk > express > send > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > express > send > debug > ms
+    - dns > tomahawk > connect > finalhandler > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > connect > finalhandler > debug > ms
+    - dns > tomahawk > express > serve-static > send > debug > ms:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:ms:20151024'
+        path: dns > tomahawk > express > serve-static > send > debug > ms
+  'npm:negotiator:20160616':
+    - dns > tomahawk > errorhandler > accepts > negotiator:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:negotiator:20160616'
+        path: dns > tomahawk > errorhandler > accepts > negotiator
+    - dns > tomahawk > express > accepts > negotiator:
+        patched: '2024-03-15T01:52:50.064Z'
+        id: 'npm:negotiator:20160616'
+        path: dns > tomahawk > express > accepts > negotiator
