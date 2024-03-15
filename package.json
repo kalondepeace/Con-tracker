@@ -6,7 +6,8 @@
     "dgram": "^1.0.1",
     "dns": "^0.2.2",
     "fetch": "^1.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "friendly-errors-webpack-plugin": "1.7.0",
@@ -17,7 +18,9 @@
   },
   "scripts": {
     "dev": "node index.js",
-    "build": "webpack"
+    "build": "webpack",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "name": "visualize",
   "description": "```",
@@ -34,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/kalondepeace/Con-tracker/issues"
   },
-  "homepage": "https://github.com/kalondepeace/Con-tracker#readme"
+  "homepage": "https://github.com/kalondepeace/Con-tracker#readme",
+  "snyk": true
 }
